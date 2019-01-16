@@ -12,5 +12,12 @@
     tools:context=".Detail_Activity"
     tools:showIn="@layout/activity_detail_"
     >
+    <ja.burhanrashid52.photoeditor.PhotoEditorView
+        android:id="@+id/Image_detail_preview"
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop" />
 
 </RelativeLayout>

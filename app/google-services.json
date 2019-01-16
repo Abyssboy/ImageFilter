@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "518772668918",
+    "firebase_url": "https://imagefilterproject.firebaseio.com",
+    "project_id": "imagefilterproject",
+    "storage_bucket": "imagefilterproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518772668918:android:b9384b3e66d72db9",
+        "android_client_info": {
+          "package_name": "com.example.nutta.imagefilter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518772668918-2tii3klbsi9qkfnvsmbsj0n0iucni430.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcXIEb0kUeLcqNjZed9gWwzf26xwAGWvQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -37,6 +38,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubFilter;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -267,8 +269,17 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
     }
 
     private void NextPage() {
+        /*ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        OriginalBitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+        byte[] bytesArray =stream.toByteArray();*/
+
+        /*Intent intent = new Intent(this,Detail_Activity.class);
+        intent.putExtra("image",bytesArray);
+        startActivity(intent);*/
+
         Intent intent = new Intent(this,Detail_Activity.class);
         startActivity(intent);
+
     }
 
     private void SaveImageToGallary() {
