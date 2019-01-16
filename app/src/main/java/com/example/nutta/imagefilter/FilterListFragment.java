@@ -104,10 +104,16 @@ public class FilterListFragment extends BottomSheetDialogFragment implements Fil
                     thumbnailItem.image = thumpImg;
                     thumbnailItem.filterName = "Normal";
                     ThumbnailsManager.addThumb(thumbnailItem);
+                    /*List<Filter> filters = FilterPack.getFilterPack(getActivity());*/
+                     List<Filter> filters = new ArrayList<>();
+                     filters.add(FilterPack.getAdeleFilter(getActivity()));
+                     filters.add(FilterPack.getCruzFilter(getActivity()));
+                     filters.add(FilterPack.getAudreyFilter(getActivity()));
+                     filters.add(FilterPack.getMetropolis(getActivity()));
 
-                    List<Filter> filters = FilterPack.getFilterPack(getActivity());
 
-                    for (Filter filter : filters) {
+
+                for (Filter filter : filters) {
 
                         ThumbnailItem TI = new ThumbnailItem();
                         TI.image = thumpImg;

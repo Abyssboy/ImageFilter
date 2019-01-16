@@ -312,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
                                             photoEditorView.getSource().setImageBitmap(saveBitmap);
                                             final String path = BitmapUtils.insertImage(getContentResolver(),
                                                     saveBitmap,
-                                                    System.currentTimeMillis()+"_ImageFilter.jpg"
+                                                    System.currentTimeMillis()+"_ImageFilter"
                                                     ,null);
                                             if(!TextUtils.isEmpty(path))
                                             {
