@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
-    </android.support.design.widget.AppBarLayout>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolBar_Detail"
         android:background="@android:color/white"
@@ -21,4 +21,7 @@
         tools:ignore="MissingConstraints">
 
 </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <include layout="@layout/content_detail"/>
+
 </android.support.constraint.ConstraintLayout>
