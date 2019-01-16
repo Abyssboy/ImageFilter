@@ -16,7 +16,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:actionMenuTextColor">@color/color_option_menu</item>
+        <item name="android:actionMenuTextColor">@color/Silpakorn</item>
 
 
     </style>

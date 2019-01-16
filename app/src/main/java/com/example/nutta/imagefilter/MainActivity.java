@@ -258,7 +258,17 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
             SaveImageToGallary();
             return true;
         }
+        if(id == R.id.action_nextpage){
+            NextPage();
+            return true;
+
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void NextPage() {
+        Intent intent = new Intent(this,Detail_Activity.class);
+        startActivity(intent);
     }
 
     private void SaveImageToGallary() {
@@ -434,8 +444,8 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
 
     @Override
     public void onPaintColorChangeListener(int color) {
-
-
+        int edit_color = color;
+        photoEditor.setBrushColor(edit_color);
     }
 
     @Override

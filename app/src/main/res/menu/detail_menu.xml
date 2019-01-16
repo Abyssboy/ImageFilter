@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:apps="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
->
+    >
     <item
         android:id="@+id/action_open"
         apps:showAsAction="always"
@@ -11,22 +11,16 @@
         android:enabled="true"
         android:visible="false"
         android:title="Open"
-    />
+        />
 
     <item
-        android:id="@+id/action_save"
+        android:id="@+id/Finish"
         apps:showAsAction="always"
         android:orderInCategory="101"
         android:enabled="true"
-        android:title="Save"
+        android:title="Finish"
         />
-    <item
-        android:id="@+id/action_nextpage"
-        android:enabled="true"
-        android:icon="@drawable/ic_arrow_forward_black_24dp"
-        android:orderInCategory="102"
-        android:title="Save"
-        apps:showAsAction="always" />
+
 
 
 </menu>
