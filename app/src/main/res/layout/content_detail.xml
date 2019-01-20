@@ -11,13 +11,178 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Detail_Activity"
     tools:showIn="@layout/activity_detail_"
+    android:padding="16dp"
     >
-    <ja.burhanrashid52.photoeditor.PhotoEditorView
-        android:id="@+id/Image_detail_preview"
+
+    <LinearLayout
+        android:id="@+id/layout_showImage"
         android:layout_width="match_parent"
-        android:layout_height="460dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop" />
+        android:layout_height="200dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Mbut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_showImage"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="ชื่อ:"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/Edit_Name"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="ชื่อ"
+                android:inputType="textPersonName"
+                android:textSize="16dp"
+
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="ลักษณะ:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/Edit_Detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:layout_margin="8dp"
+                android:gravity="left|top"
+                android:hint="ลักษณะ"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="5"></EditText>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="ตำเเหน่ง:"
+                android:textSize="16dp" />
+
+            <EditText
+                android:id="@+id/Edit_position"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:layout_margin="8dp"
+                android:gravity="left|top"
+                android:hint="ตำเเหน่ง"
+                android:inputType="textMultiLine"
+                android:lines="2"
+                android:maxLines="2"></EditText>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ปีที่สร้าง(พ.ศ.):"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/Edit_Age"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="พ,ศ."
+                android:inputType="number"
+                android:textSize="16dp"
+
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ขนาด:"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:id="@+id/Edit_Width"
+                    style="@android:style/Widget.DeviceDefault.EditText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:ems="10"
+                    android:hint="กว้าง(ซ.ม.)"
+                    android:inputType="number"
+                    android:textSize="16dp"
+
+                    />
+                <EditText
+                    android:id="@+id/Edit_Height"
+                    style="@android:style/Widget.DeviceDefault.EditText"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:ems="10"
+                    android:hint="ยาว(ซ.ม.)"
+                    android:inputType="number"
+                    android:textSize="16dp"
+
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+
+                android:textSize="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="หมายเหตุ:" />
+
+            <EditText
+                android:id="@+id/Edit_ETC"
+                style="@android:style/Widget.DeviceDefault.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="หมายเหตุ"
+                android:inputType="textPersonName"
+                android:textSize="16dp"
+
+                />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
