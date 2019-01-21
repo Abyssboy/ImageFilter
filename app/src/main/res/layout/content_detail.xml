@@ -18,20 +18,13 @@
         android:id="@+id/layout_showImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/Mbut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/layout_showImage"
+        android:scrollbars="none"
         >
 
         <LinearLayout
@@ -80,6 +73,81 @@
                 android:inputType="textMultiLine"
                 android:lines="5"
                 android:maxLines="5"></EditText>
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="สถานที่:"
+                android:textSize="16dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ShowLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:textSize="16dp"
+                    android:text="TextView" />
+
+                <Button
+                    android:id="@+id/ChangeLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:layout_weight="1"
+                    android:text="เปลี่ยน" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="ละจิจูด"
+                    android:textSize="16dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/Latitude"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="16dp"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:text="ลองจิจูด"
+                    android:textSize="16dp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/Longtitude"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textSize="16dp"
+
+                    />
+
+
+            </LinearLayout>
 
             <TextView
 

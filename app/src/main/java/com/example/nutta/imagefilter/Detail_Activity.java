@@ -3,6 +3,8 @@ package com.example.nutta.imagefilter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Address;
+import android.location.Geocoder;
 import android.provider.ContactsContract;
 import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
@@ -27,12 +29,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 
 import org.w3c.dom.Text;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import io.opencensus.tags.Tag;
@@ -48,12 +54,17 @@ public class Detail_Activity extends AppCompatActivity {
     String Pos  =   null;
     String Year = null;
     String Wide =  null;
+    String Latitude_data = null;
+    String Longtitude_data = null;
     String Height = null;
     String ETC =  null;
     Date create_date = null;
     Date update_date = null;
 
     Button mButton;
+    TextView mLocation;
+    TextView LT;
+    TextView LONGT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +79,8 @@ public class Detail_Activity extends AppCompatActivity {
 
 
         PhotoEditorView photoEditorView;
+        Geocoder geocoder;
+        List<Address> addresses;
 
 
          /*
@@ -95,9 +108,33 @@ public class Detail_Activity extends AppCompatActivity {
 
 
 
+        double Latitude = 13.7540787;
+        double Longtitude =100.6257144;
+
+        mButton = findViewById(R.id.ChangeLocation);
+        mLocation = findViewById(R.id.ShowLocation);
+        LT = findViewById(R.id.Latitude);
+        LONGT = findViewById(R.id.Longtitude);
 
 
-        mButton = findViewById(R.id.Mbut);
+
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            addresses = geocoder.getFromLocation(Latitude,Longtitude,1);
+
+            String name = addresses.get(0).getCountryName();
+
+
+            mLocation.setText(name);
+            String finalLa = Double.toString(Latitude);
+            String finalLong = Double.toString(Longtitude);
+            LT.setText(finalLa);
+            LONGT.setText(finalLong);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +179,11 @@ public class Detail_Activity extends AppCompatActivity {
             Height = TextHeight.getText().toString();
             ETC = TextETC.getText().toString();
 
+            Latitude_data = LT.getText().toString();
+            Longtitude_data = LONGT.getText().toString();
+
+
+
             Timestamp timestamp =  new Timestamp(System.currentTimeMillis());
             Log.i("TAG","test"+timestamp);
 
@@ -156,6 +198,8 @@ public class Detail_Activity extends AppCompatActivity {
         DataMap.put("Year",Year);
         DataMap.put("Wide",Wide);
         DataMap.put("Height",Height);
+        DataMap.put("Latitude",Latitude_data);
+        DataMap.put("Longtitude",Longtitude_data);
         DataMap.put("ETC",ETC);
         DataMap.put("create_date",create_date);
         DataMap.put("update_date",update_date);
