@@ -10,11 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.nutta.imagefilter.Model.MuralItem;
+import com.example.nutta.imagefilter.PageMyMural;
 import com.example.nutta.imagefilter.R;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListAdapter extends ArrayAdapter<MuralItem> {
 private Context mContext;
@@ -30,6 +34,7 @@ private ArrayList<MuralItem> mMutalItem;
         this.mMutalItem = objects;
     }
 
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -39,7 +44,7 @@ private ArrayList<MuralItem> mMutalItem;
 
         MuralItem muralItem = mMutalItem.get(position);
 
-        TextView Name =ItemLayout.findViewById(R.id.Name);
+        TextView Name =ItemLayout.findViewById(R.id.Name_Mural);
 
         Name.setText(muralItem.Name);
 

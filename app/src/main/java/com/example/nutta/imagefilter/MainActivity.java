@@ -10,6 +10,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Filter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
    PhotoEditorView photoEditorView;
    PhotoEditor photoEditor;
    CardView btn_filters_list,btn_Edit,btn_paint;
-
+   // ImageButton btn_filters_list,btn_Edit,btn_paint;
 
 
     ConstraintLayout coordinatorLayout;
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
         btn_Edit = findViewById(R.id.btn_edit_list);
         btn_filters_list = findViewById(R.id.btn_fliters_list);
         btn_paint = findViewById(R.id.btn_Paint);
+
 
 
         btn_filters_list.setOnClickListener(new View.OnClickListener() { /*v2*/
@@ -278,9 +281,13 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
         startActivity(intent);*/
 
         Intent intent = new Intent(this,Detail_Activity.class);
+        /*ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        finalbitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
+        intent.putExtra("byteArray", bs.toByteArray());*/
         startActivity(intent);
 
     }
+
 
     private void SaveImageToGallary() {
         Dexter.withActivity(this)

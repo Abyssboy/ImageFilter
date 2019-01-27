@@ -60,7 +60,7 @@ public class EditImageFragment extends BottomSheetDialogFragment implements Seek
         Seekbar_brightness.setProgress(100);
 
         Seekbar_Contrast.setMax(20);
-        Seekbar_Contrast.setProgress(0);
+        Seekbar_Contrast.setProgress(10);
 
         Seekbar_Contrast.setOnSeekBarChangeListener( this);
         Seekbar_brightness.setOnSeekBarChangeListener(this);

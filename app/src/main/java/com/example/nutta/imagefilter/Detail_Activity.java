@@ -1,5 +1,6 @@
 package com.example.nutta.imagefilter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -81,6 +82,8 @@ public class Detail_Activity extends AppCompatActivity {
         PhotoEditorView photoEditorView;
         Geocoder geocoder;
         List<Address> addresses;
+
+
 
 
          /*
@@ -207,7 +210,15 @@ public class Detail_Activity extends AppCompatActivity {
         firebaseFirestore.collection("Item").add(DataMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
-                Toast.makeText(Detail_Activity.this,"Okay",Toast.LENGTH_LONG).show();
+              //  Toast.makeText(Detail_Activity.this,"Okay",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Detail_Activity.this,Main_Menu.class);
+        /*ByteArrayOutputStream bs = new ByteArrayOutputStream();
+        finalbitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
+        intent.putExtra("byteArray", bs.toByteArray());*/
+                startActivity(intent);
+
+
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
