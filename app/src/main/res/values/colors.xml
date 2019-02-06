@@ -8,6 +8,12 @@
     <color name="color_option_menu">#FF3990</color>
     <color name="card_BG_color">#F5F5F5</color>
     <color name="Silpakorn">#45ab87</color>
+    <color name="textcolor">#000000</color>
+    <color name="grey">#A9A9A9</color>
+
+    #D3D3D3
+
+
 
 
 </resources>

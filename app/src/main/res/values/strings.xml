@@ -3,4 +3,20 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="MuralPos">
+        <item>บานประตู</item>
+        <item>บานหน้าต่าง</item>
+        <item>ขอบประตู</item>
+        <item>ขอบหน้าต่าง</item>
+        <item>ฝาผนัง</item>
+    </string-array>
+    <string-array name="MuralType">
+        <item>ลายกระหนกสามตัวหรือกนก</item>
+        <item>ลายกระจัง</item>
+        <item>ลายประจำยามหรือลายสามยาม</item>
+        <item>ลายพุ่มข้าวบิณฑ์</item>
+        <item>ลายดาว</item>
+        <item>ลายกรวยเชิง</item>
+        <item>อื่นๆ</item>
+    </string-array>
 </resources>

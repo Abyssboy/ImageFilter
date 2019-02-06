@@ -43,9 +43,9 @@ public class PageMyMural extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tabmymural);
-        loadDB();
+        //loadDB();
 
-      /* firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+      firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
            @Override
            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                mMuralItem.clear();
@@ -58,7 +58,7 @@ public class PageMyMural extends AppCompatActivity {
 
                 }
            }
-       });*/
+       });
         mAdapter = new ListAdapter(
                 this,
                 R.layout.listitem,
@@ -97,7 +97,7 @@ public class PageMyMural extends AppCompatActivity {
 
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
@@ -107,9 +107,9 @@ public class PageMyMural extends AppCompatActivity {
             }
         }
 
-    }
+    }*/
 
-    private void loadDB() {
+    /*private void loadDB() {
 
         firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -134,11 +134,11 @@ public class PageMyMural extends AppCompatActivity {
 
                 }
             }
-        });
+        });*/
 
 
     }
-}
+
 
 
 

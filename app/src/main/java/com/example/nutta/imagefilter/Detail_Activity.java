@@ -17,8 +17,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -49,16 +53,17 @@ public class Detail_Activity extends AppCompatActivity {
     private PhotoEditorView photoEditorView;
    private Bitmap Img_preview;
    FirebaseFirestore firebaseFirestore;
-   EditText TextName,TextDetail,TextPos,TextYear,TextWide,TextHeight,TextETC;
+   EditText TextName,TextDetail,TextYearFrom,TextYearTo,TextWide,TextHeight;
     String name  = null ;
     String Detail = null;
-    String Pos  =   null;
-    String Year = null;
+    String muralpos  =   null;
+    String muraltype  =   null;
+    String YearFrom = null;
+    String YearTo = null;
     String Wide =  null;
     String Latitude_data = null;
     String Longtitude_data = null;
     String Height = null;
-    String ETC =  null;
     Date create_date = null;
     Date update_date = null;
 
@@ -67,10 +72,16 @@ public class Detail_Activity extends AppCompatActivity {
     TextView LT;
     TextView LONGT;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_);
+
+         Spinner mPos = findViewById(R.id.Muralpos);
+        Spinner mType = findViewById(R.id.Muraltype);
+
 
         Toolbar toolbar = findViewById(R.id.toolBar_Detail);
         setSupportActionBar(toolbar);
@@ -82,6 +93,40 @@ public class Detail_Activity extends AppCompatActivity {
         PhotoEditorView photoEditorView;
         Geocoder geocoder;
         List<Address> addresses;
+
+
+        final String[] pos  = getResources().getStringArray(R.array.MuralPos);
+        ArrayAdapter<String> adapterpos = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, pos);
+
+        mPos.setAdapter(adapterpos);
+
+        mPos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                muralpos = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        final String[] type  = getResources().getStringArray(R.array.MuralType);
+        ArrayAdapter<String> adaptertype = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line, type);
+        mType.setAdapter(adaptertype);
+
+        mType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                muraltype = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
 
@@ -103,11 +148,10 @@ public class Detail_Activity extends AppCompatActivity {
 
         TextName  = findViewById(R.id.Edit_Name);
         TextDetail = findViewById(R.id.Edit_Detail);
-        TextPos   = findViewById(R.id.Edit_position);
-        TextYear  = findViewById(R.id.Edit_Age);
         TextWide  = findViewById(R.id.Edit_Width);
         TextHeight  = findViewById(R.id.Edit_Width);
-        TextETC  = findViewById(R.id.Edit_ETC);
+        TextYearFrom = findViewById(R.id.Edit_YEAR_FROM);
+        TextYearTo = findViewById(R.id.Edit_YEAR_TO);
 
 
 
@@ -176,14 +220,15 @@ public class Detail_Activity extends AppCompatActivity {
         }else {
             name = TextName.getText().toString();
             Detail = TextDetail.getText().toString();
-            Pos  = TextPos.getText().toString();
-            Year = TextYear.getText().toString();
+            YearFrom = TextYearFrom.getText().toString();
+            YearTo = TextYearTo.getText().toString();
             Wide =  TextWide.getText().toString();
             Height = TextHeight.getText().toString();
-            ETC = TextETC.getText().toString();
 
             Latitude_data = LT.getText().toString();
             Longtitude_data = LONGT.getText().toString();
+
+
 
 
 
@@ -197,13 +242,15 @@ public class Detail_Activity extends AppCompatActivity {
 
         DataMap.put("Name",name);
         DataMap.put("Detail",Detail);
-        DataMap.put("Position",Pos);
-        DataMap.put("Year",Year);
+        DataMap.put("Position",muralpos);
+        DataMap.put("Type",muraltype);
+
+        DataMap.put("YearFrom",YearFrom);
+        DataMap.put("YearTo",YearTo);
         DataMap.put("Wide",Wide);
         DataMap.put("Height",Height);
         DataMap.put("Latitude",Latitude_data);
         DataMap.put("Longtitude",Longtitude_data);
-        DataMap.put("ETC",ETC);
         DataMap.put("create_date",create_date);
         DataMap.put("update_date",update_date);
 
