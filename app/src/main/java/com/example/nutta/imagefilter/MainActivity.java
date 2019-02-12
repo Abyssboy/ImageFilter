@@ -26,6 +26,7 @@ import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.example.nutta.imagefilter.Adapter.ViewPagerAdapter;
+import com.example.nutta.imagefilter.Interface.BWFragmentListener;
 import com.example.nutta.imagefilter.Interface.EditImageFragmentListener;
 import com.example.nutta.imagefilter.Interface.FilterListFragmentListener;
 import com.example.nutta.imagefilter.Interface.PaintFragmentListener;
@@ -38,6 +39,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.zomato.photofilters.imageprocessors.subfilters.BrightnessSubFilter;
+import com.zomato.photofilters.imageprocessors.subfilters.ColorOverlaySubFilter;
 import com.zomato.photofilters.imageprocessors.subfilters.ContrastSubFilter;
 
 import java.io.ByteArrayOutputStream;
@@ -48,7 +50,7 @@ import ja.burhanrashid52.photoeditor.OnSaveBitmap;
 import ja.burhanrashid52.photoeditor.PhotoEditor;
 import ja.burhanrashid52.photoeditor.PhotoEditorView;
 
-public class MainActivity extends AppCompatActivity implements FilterListFragmentListener,EditImageFragmentListener, PaintFragmentListener {
+public class MainActivity extends AppCompatActivity implements FilterListFragmentListener,EditImageFragmentListener, PaintFragmentListener, BWFragmentListener {
 
     public static final String pictureName = "xxx.jpg" ;
     public static final int PERMISSION_PICK_IMAGE = 1000;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
     ViewPager viewPager;*/
    PhotoEditorView photoEditorView;
    PhotoEditor photoEditor;
-   CardView btn_filters_list,btn_Edit,btn_paint;
+   CardView btn_filters_list,btn_Edit,btn_paint,btn_BW;
    // ImageButton btn_filters_list,btn_Edit,btn_paint;
 
 
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
     EditImageFragment editImageFragment;
 
     int BrightnessFinal = 0;
+    int RGBFinal = 0;
     float Contrast = 0;
 
     static {
@@ -106,8 +109,23 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
         btn_Edit = findViewById(R.id.btn_edit_list);
         btn_filters_list = findViewById(R.id.btn_fliters_list);
         btn_paint = findViewById(R.id.btn_Paint);
+        btn_BW = findViewById(R.id.btn_BW);
+
+        btn_BW.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BWFragment bwFragment = BWFragment.getInstance();
+                bwFragment.setListener(MainActivity.this);
+                bwFragment.show(getSupportFragmentManager(),bwFragment.getTag());
 
 
+                /*com.zomato.photofilters.imageprocessors.Filter myFilter = new com.zomato.photofilters.imageprocessors.Filter();
+                myFilter.addSubFilter(new ColorOverlaySubFilter(400, -200 ,-200, -200));
+                /*v.1 img_preview.setImageBitmap(myFilter.processFilter(finalbitmap.copy(Bitmap.Config.ARGB_8888,true)));
+                photoEditorView.getSource().setImageBitmap(myFilter.processFilter(finalbitmap.copy(Bitmap.Config.ARGB_8888,true)));*/
+
+            }
+        });
 
         btn_filters_list.setOnClickListener(new View.OnClickListener() { /*v2*/
             @Override
@@ -214,6 +232,8 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
         photoEditorView.getSource().setImageBitmap(myFilter.processFilter(finalbitmap.copy(Bitmap.Config.ARGB_8888,true)));
 
     }
+
+
 /*
     @Override
     public void onContrastChanged(float contrast) {
@@ -225,6 +245,23 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
     }
     */
 
+
+    /*@Override
+    public void onDepthChanged(int Depth) {
+            com.zomato.photofilters.imageprocessors.Filter myFilter = new com.zomato.photofilters.imageprocessors.Filter();
+            myFilter.addSubFilter(new ColorOverlaySubFilter(Depth, -100 ,-100,-100));
+
+            photoEditorView.getSource().setImageBitmap(myFilter.processFilter(finalbitmap.copy(Bitmap.Config.ARGB_8888,true)));
+    }*/
+
+    @Override
+    public void onColorChanged(int contrast) {
+        RGBFinal = contrast;
+        com.zomato.photofilters.imageprocessors.Filter myFilter = new com.zomato.photofilters.imageprocessors.Filter();
+        myFilter.addSubFilter(new ColorOverlaySubFilter(200, contrast ,contrast,contrast));
+
+        photoEditorView.getSource().setImageBitmap(myFilter.processFilter(finalbitmap.copy(Bitmap.Config.ARGB_8888,true)));
+    }
 
     @Override
     public void EditStarted() {
@@ -239,6 +276,8 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
         com.zomato.photofilters.imageprocessors.Filter myFilter = new com.zomato.photofilters.imageprocessors.Filter();
         myFilter.addSubFilter(new BrightnessSubFilter(BrightnessFinal));
         myFilter.addSubFilter(new ContrastSubFilter(Contrast));
+        myFilter.addSubFilter(new ColorOverlaySubFilter(200,RGBFinal,RGBFinal,RGBFinal));
+
 
         finalbitmap  = myFilter.processFilter(bitmap);
 
