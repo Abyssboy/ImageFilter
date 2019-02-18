@@ -37,7 +37,7 @@ public class Main_Menu extends Activity {
 
         TabHost.TabSpec tabSpec4 = tabHost.newTabSpec("tab4")
                 .setIndicator("Filter")
-                .setContent(new Intent(this, PageFliter.class));
+                .setContent(new Intent(this, Filter.class));
 
 
         tabHost.addTab(tabSpec2);
