@@ -14,9 +14,9 @@
     <LinearLayout
         android:id="@+id/fillterlist"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:orientation="horizontal"
-        android:padding="32dp"
+        android:padding="16dp"
 
         >
 
@@ -41,7 +41,7 @@
                     android:text="ประเภท" />
 
             <Spinner
-                android:id="@+id/Muraltype"
+                android:id="@+id/filter_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -63,7 +63,7 @@
                     android:text="ตำเเหน่ง" />
 
                 <Spinner
-                    android:id="@+id/XXX"
+                    android:id="@+id/filter_pos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -82,21 +82,62 @@
                 <TextView
                     android:layout_width="64dp"
                     android:layout_height="wrap_content"
-                    android:text="วันที่สร้าง" />
+                    android:text="วันที่จัดทำ" />
 
                 <EditText
                     android:id="@+id/CreateDateFrom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="DD/MM/YYYY" />
+                    android:hint="DD/MM/YYYY"
+                    android:inputType="time"
+                    />
                 <EditText
                     android:id="@+id/CreateDateTo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="DD/MM/YYYY" />
+                    android:hint="DD/MM/YYYY"
+                    android:inputType="time"
+
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+
+                >
+
+
+                <TextView
+                    android:layout_width="64dp"
+                    android:layout_height="wrap_content"
+                    android:text="ปีที่สร้าง" />
+
+                <EditText
+                    android:id="@+id/YearFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="DD/MM/YYYY"
+                    android:inputType="time"
+                    />
+                <EditText
+                    android:id="@+id/YearTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="DD/MM/YYYY"
+                    android:inputType="time"
+
+                    />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/Search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search" />
         </LinearLayout>
+
 
 
     </LinearLayout>

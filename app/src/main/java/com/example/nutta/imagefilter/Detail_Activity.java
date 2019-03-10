@@ -169,7 +169,7 @@ public class Detail_Activity extends AppCompatActivity {
         try {
             addresses = geocoder.getFromLocation(Latitude,Longtitude,1);
 
-            String name = addresses.get(0).getCountryName();
+            String name = addresses.get(0).getCountryCode();
 
 
             mLocation.setText(name);

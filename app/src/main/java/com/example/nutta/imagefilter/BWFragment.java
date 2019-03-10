@@ -16,7 +16,7 @@ public class BWFragment  extends BottomSheetDialogFragment implements SeekBar.On
 
 
     private BWFragmentListener listener;
-    SeekBar Seekbar_depth,Seekbar_color;
+    SeekBar Seekbar_color;
 
     static BWFragment instance;/*v2*/
 
@@ -44,7 +44,6 @@ public class BWFragment  extends BottomSheetDialogFragment implements SeekBar.On
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View itemView = inflater.inflate(R.layout.fragment_black_white, container, false);
-        Seekbar_depth=  itemView.findViewById(R.id.seekbar_dept);
         Seekbar_color = itemView.findViewById(R.id.seekbar_bw);
 
         /*Seekbar_brightness.setMax(200);
@@ -52,13 +51,11 @@ public class BWFragment  extends BottomSheetDialogFragment implements SeekBar.On
 
         Seekbar_Contrast.setMax(200);
         Seekbar_brightness.setProgress(100);*/
-        Seekbar_depth.setMax(500);
-        Seekbar_depth.setProgress(0);
+
 
         Seekbar_color.setMax(500);
         Seekbar_color.setProgress(0);
 
-        Seekbar_depth.setOnSeekBarChangeListener( this);
         Seekbar_color.setOnSeekBarChangeListener(this);
         return itemView;
     }
@@ -66,11 +63,8 @@ public class BWFragment  extends BottomSheetDialogFragment implements SeekBar.On
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (listener != null){
-            if (seekBar.getId()==R.id.seekbar_dept){
-               // listener.onDepthChanged(progress+100);
 
-            }
-            else if(seekBar.getId()==R.id.seekbar_bw){
+       if(seekBar.getId()==R.id.seekbar_bw){
                 progress = - progress ;
                 listener.onColorChanged(progress);
             }
