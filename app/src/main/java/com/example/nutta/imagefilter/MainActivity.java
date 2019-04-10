@@ -212,6 +212,8 @@ public class MainActivity extends AppCompatActivity implements FilterListFragmen
             editImageFragment.resetControl();
         BrightnessFinal = 0;
         Contrast = 0;
+        RGBFinal = 0;
+
     }
 
     @Override

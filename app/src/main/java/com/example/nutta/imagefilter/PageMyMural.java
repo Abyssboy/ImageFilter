@@ -90,6 +90,7 @@ public class PageMyMural extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PageMyMural.this, MainActivity.class);
+
                 startActivityForResult(intent, 1);
             }
 
