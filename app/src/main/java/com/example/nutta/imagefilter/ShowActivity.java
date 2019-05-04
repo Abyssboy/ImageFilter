@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nutta.imagefilter.Model.MuralItem;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,7 +30,7 @@ public class ShowActivity extends AppCompatActivity {
     private static final String TAG = "FireLog";
 
     TextView TextName, TextDetail, TextPos, TextYear, TextWide, TextHeight, TextETC;
-    String name = null;
+    String name ;
     String Detail = null;
     String Pos = null;
     String Year = null;
@@ -46,6 +47,8 @@ public class ShowActivity extends AppCompatActivity {
     TextView LT;
     TextView LONGT;
 
+    private String Currentgroupname,currentID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,18 +61,27 @@ public class ShowActivity extends AppCompatActivity {
         TextDetail = findViewById(R.id.Show_detail);
 
 
+
+        Currentgroupname = getIntent().getExtras().get("groupname").toString();
+        Toast.makeText(ShowActivity.this,Currentgroupname,Toast.LENGTH_LONG).show();
+
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        firebaseFirestore.collection("Item").document("IbApVfGzb9nK54lXotz7").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+
+        firebaseFirestore.collection("Item").document(Currentgroupname).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot  doc = task.getResult();
                     if (doc.exists()) {
                         Log.d(TAG, "DocumentSnapshot data: " + doc.get("Name"));
-                        String name = doc.get("Name").toString();
+                       name = doc.get("Name").toString();
+                        Toast.makeText(ShowActivity.this,name,Toast.LENGTH_LONG).show();
+
                         TextName.setText(name);
                         getSupportActionBar().setTitle(name);
+
+
                     }
                 }
             }

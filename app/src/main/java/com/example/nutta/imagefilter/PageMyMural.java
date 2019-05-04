@@ -24,6 +24,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.model.Document;
 
@@ -32,11 +33,16 @@ import java.util.List;
 
 import io.opencensus.tags.Tag;
 
-public class PageMyMural extends AppCompatActivity {
+public class PageMyMural extends AppCompatActivity  {
+
+
     private static final String TAG = "FireLog";
     private ListAdapter mAdapter;
     public ArrayList<MuralItem> mMuralItem = new ArrayList<>();
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+
+    String SentId;
 
 
     @Override
@@ -44,34 +50,97 @@ public class PageMyMural extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tabmymural);
         //loadDB();
+        FloatingActionButton fab = findViewById(R.id.fab);
 
-      firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-           @Override
-           public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-               mMuralItem.clear();
-                for(DocumentSnapshot  snapshot : queryDocumentSnapshots){
-                    String name = snapshot.getString("Name");
-                    String ID = snapshot.getId();
-                    MuralItem muralItem= new MuralItem(ID,name);
-                    mMuralItem.add(muralItem);
-                    Log.d(TAG, "onEvent: "+name+" "+ID);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PageMyMural.this, MainActivity.class);
 
+                startActivityForResult(intent, 1);
+            }
+
+        });
+
+        firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task){
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                        String name = documentSnapshot.getString("Name");
+                        String ID = documentSnapshot.getId();
+                        MuralItem muralItem = new MuralItem(ID, name);
+                        mMuralItem.add(muralItem);
+                    }
+
+
+                    final ListView LV = findViewById(R.id.MyMuralItem);
+                    LV.setAdapter(mAdapter);
+                    LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String CurrentGroupname = parent.getItemAtPosition(position).toString();
+                            Intent groupIntent = new Intent(view.getContext(), ShowActivity.class);
+                            groupIntent.putExtra("groupname",CurrentGroupname);
+                            startActivity(groupIntent);
+
+                        }
+                    });
+
+                } else {
+                    Log.d("MissionActivity", "Error getting documents: ", task.getException());
                 }
-           }
-       });
+            }
+        });
+
         mAdapter = new ListAdapter(
                 this,
                 R.layout.listitem,
                 mMuralItem
 
         );
-        ListView LV = findViewById(R.id.MyMuralItem);
+
+                                                                                                }
+
+       /* firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                mMuralItem.clear();
+                for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                    String name = snapshot.getString("Name");
+                    String ID = snapshot.getId();
+                    MuralItem muralItem = new MuralItem(ID, name);
+                    mMuralItem.add(muralItem);
+                    Log.d(TAG, "onEvent: " + name + " " + ID);
+
+                }
+            }
+        });*/
+
+       /* ListView LV = findViewById(R.id.MyMuralItem);
         LV.setAdapter(mAdapter);
+        /*LV.setOnClickListener(this);*/
+
+     /*   LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(view.getContext(), ShowActivity.class));
+
+            }
+        }); */
+       /*LV.setOnClickListener(new AdapterView.OnItemClickListener(){
+           @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
+                Intent intent =new Intent(PageMyMural.this,ShowActivity.class);
 
+                intent.putExtra("Position",ItemID);
+                startActivityForResult(intent,2);
 
-      /*  LV.setOnClickListener(new AdapterView.OnItemClickListener(){
+        });*/
+
+      /*  \LV.setOnClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MuralItem muralItem =mMuralItem.get(position);
@@ -84,17 +153,7 @@ public class PageMyMural extends AppCompatActivity {
             }
         });*/
 
-        FloatingActionButton fab = findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PageMyMural.this, MainActivity.class);
-
-                startActivityForResult(intent, 1);
-            }
-
-        });
 
     }
 
@@ -137,8 +196,22 @@ public class PageMyMural extends AppCompatActivity {
             }
         });*/
 
+    /*@Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab:
+                Intent intent = new Intent(PageMyMural.this, MainActivity.class);
 
-    }
+                startActivityForResult(intent, 1);
+                break;
+
+            case R.id.MyMuralItem:
+
+
+                /*intent.putExtra("Position", ItemID);
+                startActivityForResult(intent, 2);
+                break;*/
+
 
 
 
