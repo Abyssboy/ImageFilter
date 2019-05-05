@@ -47,7 +47,7 @@ public class ShowActivity extends AppCompatActivity {
     TextView LT;
     TextView LONGT;
 
-    private String Currentgroupname,currentID;
+    private String CurrentgroupID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +62,13 @@ public class ShowActivity extends AppCompatActivity {
 
 
 
-        Currentgroupname = getIntent().getExtras().get("groupname").toString();
-        Toast.makeText(ShowActivity.this,Currentgroupname,Toast.LENGTH_LONG).show();
+        CurrentgroupID = getIntent().getExtras().get("CurrentgroupID").toString();
+        Toast.makeText(ShowActivity.this,CurrentgroupID,Toast.LENGTH_LONG).show();
 
         firebaseFirestore = FirebaseFirestore.getInstance();
 
 
-        firebaseFirestore.collection("Item").document(Currentgroupname).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        firebaseFirestore.collection("Item").document(CurrentgroupID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){

@@ -10,6 +10,6 @@ public class MuralItem {
     }
 
     public String toString(){
-        return Name;
+        return ID;
     }
 }

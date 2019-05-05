@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+import android.widget.Toast;
 
 
 import com.example.nutta.imagefilter.Adapter.ListAdapter;
@@ -33,7 +33,7 @@ import java.util.List;
 
 import io.opencensus.tags.Tag;
 
-public class PageMyMural extends AppCompatActivity  {
+public class PageMyMural extends AppCompatActivity {
 
 
     private static final String TAG = "FireLog";
@@ -64,7 +64,7 @@ public class PageMyMural extends AppCompatActivity  {
 
         firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task){
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                         String name = documentSnapshot.getString("Name");
@@ -76,12 +76,17 @@ public class PageMyMural extends AppCompatActivity  {
 
                     final ListView LV = findViewById(R.id.MyMuralItem);
                     LV.setAdapter(mAdapter);
+
                     LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            String CurrentGroupname = parent.getItemAtPosition(position).toString();
+                            //String CurrentGroupname = parent.getItemAtPosition(position).toString();
+                            String CurrentgroupID = parent.getItemAtPosition(position).toString();
+                            Toast.makeText(PageMyMural.this, CurrentgroupID, Toast.LENGTH_LONG).show();
+
+
                             Intent groupIntent = new Intent(view.getContext(), ShowActivity.class);
-                            groupIntent.putExtra("groupname",CurrentGroupname);
+                            groupIntent.putExtra("CurrentgroupID",CurrentgroupID);
                             startActivity(groupIntent);
 
                         }
@@ -100,119 +105,9 @@ public class PageMyMural extends AppCompatActivity  {
 
         );
 
-                                                                                                }
-
-       /* firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                mMuralItem.clear();
-                for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
-                    String name = snapshot.getString("Name");
-                    String ID = snapshot.getId();
-                    MuralItem muralItem = new MuralItem(ID, name);
-                    mMuralItem.add(muralItem);
-                    Log.d(TAG, "onEvent: " + name + " " + ID);
-
-                }
-            }
-        });*/
-
-       /* ListView LV = findViewById(R.id.MyMuralItem);
-        LV.setAdapter(mAdapter);
-        /*LV.setOnClickListener(this);*/
-
-     /*   LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(view.getContext(), ShowActivity.class));
-
-            }
-        }); */
-       /*LV.setOnClickListener(new AdapterView.OnItemClickListener(){
-           @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-                Intent intent =new Intent(PageMyMural.this,ShowActivity.class);
-
-                intent.putExtra("Position",ItemID);
-                startActivityForResult(intent,2);
-
-        });*/
-
-      /*  \LV.setOnClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                MuralItem muralItem =mMuralItem.get(position);
-                String ItemID = muralItem.ID ;
-
-                Intent intent =new Intent(PageMyMural.this,ShowActivity.class);
-
-                intent.putExtra("Position",ItemID);
-                startActivityForResult(intent,2);
-            }
-        });*/
-
-
-
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if (requestCode == RESULT_OK) {
-                loadDB();
-                mAdapter.notifyDataSetChanged();
-            }
-        }
-
-    }*/
-
-    /*private void loadDB() {
-
-        firebaseFirestore.collection("Item").orderBy("create_date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot queryDocumentSnapshots, FirebaseFirestoreException e) {
-                mMuralItem.clear();
-                if (e == null) {
-
-                    for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
-                        if (doc.getType() == DocumentChange.Type.ADDED) {
-                            String name = doc.getDocument().getString("name");
-                            String ID = doc.getDocument().getId();
-                            Log.d(TAG, "onEvent: " + name + " " + ID);
-
-
-                            MuralItem muralItem = new MuralItem(ID, name);
-
-                            mMuralItem.add(muralItem);
-
-                        }
-                    }
-
-
-                }
-            }
-        });*/
-
-    /*@Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.fab:
-                Intent intent = new Intent(PageMyMural.this, MainActivity.class);
-
-                startActivityForResult(intent, 1);
-                break;
-
-            case R.id.MyMuralItem:
-
-
-                /*intent.putExtra("Position", ItemID);
-                startActivityForResult(intent, 2);
-                break;*/
-
-
+}
 
 
 
