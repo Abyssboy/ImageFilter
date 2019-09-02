@@ -234,6 +234,57 @@
                 android:textSize="16dp"
 
                 />
+            <TextView
+
+                android:textSize="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="ผู้จัดทำ:" />
+            <TextView
+                android:id="@+id/usercreate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="ผู้จัดทำ"
+                android:textSize="16dp"
+
+                />
+            <TextView
+
+                android:textSize="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="วันที่จัดทำ:" />
+            <TextView
+                android:id="@+id/createDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="วันที่จัดทำ"
+                android:textSize="16dp"
+
+                />
+            <TextView
+
+                android:textSize="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="วันที่แก้ไข:" />
+            <TextView
+                android:id="@+id/UpdateDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:ems="10"
+                android:hint="วันที่แก้ไข"
+                android:textSize="16dp"
+
+                />
         </LinearLayout>
     </ScrollView>
 

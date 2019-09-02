@@ -91,9 +91,9 @@ public class login extends AppCompatActivity {
                                 startActivity(xxx);
                                 finish();
 
-                                Toast.makeText(getApplicationContext(), "Susscess", Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(getApplicationContext(), "Susscess", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
 
                             }
 

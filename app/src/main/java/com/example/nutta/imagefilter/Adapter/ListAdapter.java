@@ -45,8 +45,10 @@ private ArrayList<MuralItem> mMutalItem;
         MuralItem muralItem = mMutalItem.get(position);
 
         TextView Name =ItemLayout.findViewById(R.id.Name_Mural);
-
+        TextView User =ItemLayout.findViewById(R.id.USER_CREATE);
         Name.setText(muralItem.Name);
+        User.setText(muralItem.User_CREATE);
+
 
         return ItemLayout;
     }

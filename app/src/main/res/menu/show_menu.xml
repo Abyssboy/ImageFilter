@@ -8,11 +8,10 @@
 
     <item
         android:id="@+id/action_save"
-        apps:showAsAction="always"
-        android:orderInCategory="101"
         android:enabled="true"
-        android:title="Save"
-     />
+        android:orderInCategory="101"
+        android:title="บันทึก"
+        apps:showAsAction="always" />
 
 
 </menu>

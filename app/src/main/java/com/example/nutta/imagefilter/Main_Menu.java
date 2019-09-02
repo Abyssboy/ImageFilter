@@ -1,5 +1,6 @@
 package com.example.nutta.imagefilter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityGroup;
 import android.app.LocalActivityManager;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,13 +23,14 @@ import com.google.firebase.auth.UserInfo;
 
 public class Main_Menu extends Activity {
     LocalActivityManager mLocalActivityManager;
-
+    private String name ;
     private DrawerLayout dl;
     private ActionBarDrawerToggle abdt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__menu);
+
         /*dl = findViewById(R.id.dr_view);
         abdt = new ActionBarDrawerToggle(this,dl,R.string.Open,R.string.Close);
          dl.addDrawerListener(abdt);
@@ -54,15 +57,12 @@ public class Main_Menu extends Activity {
                 // Id of the provider (ex: google.com)
                 String providerId = profile.getProviderId();
                 String uid = profile.getUid();
-                String name = profile.getDisplayName();
+                name = profile.getDisplayName();
+
                 String email = profile.getEmail();
                 Uri photoUrl = profile.getPhotoUrl();
             };
         }
-
-
-
-
         mLocalActivityManager = new LocalActivityManager(this, false);
         mLocalActivityManager.dispatchCreate(savedInstanceState);
 

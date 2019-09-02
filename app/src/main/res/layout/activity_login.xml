@@ -5,20 +5,34 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center" >
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/sign_in_button"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content" />
+    >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_above="@+id/sign_in_button"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        />
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/Widget.AppCompat.TextView.SpinnerItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:textSize="40dp"
+
+
+            android:fontFamily="@font/asap"
+            android:text="@string/title_activity_main2"
+            android:textColor="@color/Silpakorn" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content" >
+
+        </com.google.android.gms.common.SignInButton>
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -52,7 +52,7 @@ import ja.burhanrashid52.photoeditor.PhotoEditorView;
 
 public class MainActivity extends AppCompatActivity implements FilterListFragmentListener,EditImageFragmentListener, PaintFragmentListener, BWFragmentListener {
 
-    public static final String pictureName = "xxx.jpg" ;
+    public static final String pictureName = "test01.jpg" ;
     public static final int PERMISSION_PICK_IMAGE = 1000;
 
    /* ImageView img_preview;

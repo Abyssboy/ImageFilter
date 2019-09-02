@@ -18,12 +18,12 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         >
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Brightness"
-            android:textSize="20sp"
-            />
+            android:text="ความสว่าง"
+            android:textSize="20sp" />
         <SeekBar
             android:id="@+id/seekbar_brightness"
             android:layout_weight="1"
@@ -38,14 +38,14 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         >
+
         <TextView
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:layout_height="wrap_content"
-            android:text="Contrast"
-            android:textSize="20sp"
-            />
+            android:text="คอนทราส"
+            android:textSize="20sp" />
         <SeekBar
             android:id="@+id/seekbar_Contrast"
             android:layout_weight="1"

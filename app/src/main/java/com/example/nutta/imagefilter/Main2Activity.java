@@ -16,15 +16,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
+import com.squareup.picasso.Picasso;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     LocalActivityManager mLocalActivityManager;
+    private String name ;
+    private String email ;
+    private Uri photoUri;
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,7 @@ public class Main2Activity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -47,11 +56,13 @@ public class Main2Activity extends AppCompatActivity
                 // Id of the provider (ex: google.com)
                 String providerId = profile.getProviderId();
                 String uid = profile.getUid();
-                String name = profile.getDisplayName();
-                String email = profile.getEmail();
-                Uri photoUrl = profile.getPhotoUrl();
+                name = profile.getDisplayName();
+                email = profile.getEmail();
+                 photoUri = profile.getPhotoUrl();
             };
         }
+
+       //.
 
 
 
@@ -94,6 +105,15 @@ public class Main2Activity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+        TextView nav_header_title = findViewById(R.id.nav_header_title);
+        TextView nav_header_email = findViewById(R.id.nav_header_email);
+        ImageView nav_header_photo = findViewById(R.id.nav_header_imageView);
+
+        nav_header_title.setText(name);
+        nav_header_email.setText(email);
+       // nav_header_photo.setImageURI(Uri.parse(photoUri));
+        Picasso.get().load(photoUri).into(nav_header_photo);
+
         getMenuInflater().inflate(R.menu.main2, menu);
         return true;
     }
@@ -103,6 +123,7 @@ public class Main2Activity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -119,9 +140,11 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_logout) {
+            firebaseAuth.signOut();
+            startActivity(new Intent(this,login.class));
+
+        } /*else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -131,7 +154,7 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
-        }
+        }*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -34,6 +34,7 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="Open">NavBar</string>
+    <string name="Logout">ออกจากระบบ</string>
     <string name="Close">NavBar</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main2">Mural Collection</string>
 </resources>

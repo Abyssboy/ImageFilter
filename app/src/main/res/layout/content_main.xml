@@ -93,7 +93,7 @@
                      <TextView
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
-                         android:text="Crop"
+                         android:text="ตัด"
                          android:textAlignment="center"
                          android:textColor="@android:color/black"
                          android:textSize="16dp"
@@ -138,10 +138,10 @@
                      <TextView
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
-                         android:text="Filter"
+                         android:text="โทนสี"
                          android:textAlignment="center"
                          android:textColor="@android:color/black"
-                         android:textSize="16dp"
+                         android:textSize="14sp"
                          android:textStyle="bold"
 
                          />
@@ -182,10 +182,10 @@
                      <TextView
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
-                         android:text="Adjust"
+                         android:text="ปรับเปลี่ยน"
                          android:textAlignment="center"
                          android:textColor="@android:color/black"
-                         android:textSize="16dp"
+                         android:textSize="10sp"
                          android:textStyle="bold"
 
                          />
@@ -196,50 +196,50 @@
 
              </android.support.v7.widget.CardView>
 
-             <android.support.v7.widget.CardView
-                 android:id="@+id/btn_Paint"
-                 android:layout_width="80dp"
-                 android:layout_height="80dp"
-                 android:layout_marginRight="16dp"
-                 android:padding="16dp"
-                 app:cardBackgroundColor="@color/card_BG_color"
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_Paint"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginRight="16dp"
+                android:padding="16dp"
+                app:cardBackgroundColor="@color/card_BG_color"
 
-                 app:cardElevation="8dp">
+                app:cardElevation="8dp">
 
-                 <LinearLayout
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center_horizontal|center_vertical"
-                     android:orientation="vertical"
-
-
-                     >
-
-                     <ImageView
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_gravity="center_horizontal"
-                         android:src="@mipmap/ic_paint"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:orientation="vertical"
 
 
-                         />
+                    >
 
-                     <TextView
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:text="Paint"
-                         android:textAlignment="center"
-                         android:textColor="@android:color/black"
-                         android:textSize="16dp"
-                         android:textStyle="bold"
-
-                         />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_paint"
 
 
-                 </LinearLayout>
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="ระบาย"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+
+                        />
 
 
-             </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/btn_BW"
@@ -272,10 +272,10 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Black/White"
+                        android:text="ดพเป็นขาว"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
-                        android:textSize="16dp"
+                        android:textSize="8sp"
                         android:textStyle="bold"
 
                         />

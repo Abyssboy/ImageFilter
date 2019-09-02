@@ -30,6 +30,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,6 +57,11 @@ public class Detail_Activity extends AppCompatActivity {
    private Bitmap Img_preview;
    FirebaseFirestore firebaseFirestore;
    EditText TextName,TextDetail,TextYearFrom,TextYearTo,TextWide,TextHeight;
+    String UID =null;
+    String USERNAME =null;
+
+    String  UserEmail =null;
+
     String name  = null ;
     String Detail = null;
     String muralpos  =   null;
@@ -79,6 +87,18 @@ public class Detail_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_);
 
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+                // Id of the provider (ex: google.com)
+                String providerId = profile.getProviderId();
+                UID = profile.getUid();
+                USERNAME = profile.getDisplayName();
+                UserEmail = profile.getEmail();
+
+            };
+        }
          Spinner mPos = findViewById(R.id.Muralpos);
         Spinner mType = findViewById(R.id.Muraltype);
 
@@ -251,6 +271,9 @@ public class Detail_Activity extends AppCompatActivity {
         DataMap.put("Height",Height);
         DataMap.put("Latitude",Latitude_data);
         DataMap.put("Longtitude",Longtitude_data);
+        DataMap.put("UID",UID);
+        DataMap.put("create_by",USERNAME);
+        DataMap.put("email_creater",UserEmail);
         DataMap.put("create_date",create_date);
         DataMap.put("update_date",update_date);
 
@@ -258,7 +281,7 @@ public class Detail_Activity extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentReference documentReference) {
               //  Toast.makeText(Detail_Activity.this,"Okay",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Detail_Activity.this,Main_Menu.class);
+                Intent intent = new Intent(Detail_Activity.this,Main2Activity.class);
         /*ByteArrayOutputStream bs = new ByteArrayOutputStream();
         finalbitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
         intent.putExtra("byteArray", bs.toByteArray());*/
